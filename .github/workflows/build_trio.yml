@@ -149,8 +149,8 @@ jobs:
           fi
 
   # When a scheduled run finds nothing new to build, cancel the run so it shows
-  # as "cancelled" instead of "success" — a green check should always mean a
-  # new build was made.
+    # as "cancelled" instead of "success" — a green check should always mean a
+    # new build was made.
   cancel_when_no_build:
     needs: check_status
     name: Cancel run when there is nothing to build
@@ -208,7 +208,7 @@ jobs:
           ref: ${{ env.TARGET_BRANCH }}
 
       # Customize Trio: Use patches or download and apply patches from GitHub
-      - name: Customize Trio
+        - name: Customize Trio
         run: |
 
           # Trio workspace patches
