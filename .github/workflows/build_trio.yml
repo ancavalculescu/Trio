@@ -272,6 +272,8 @@ jobs:
         run: sudo sntp -sS time.windows.com
 
       # Build signed Trio IPA file
+      - name: Update Fastlane
+        run: bundle update fastlane
       - name: Fastlane Build & Archive
         run: bundle exec fastlane build_trio
         env:
