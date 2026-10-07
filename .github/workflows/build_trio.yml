@@ -151,17 +151,17 @@ jobs:
   # When a scheduled run finds nothing new to build, cancel the run so it shows
   # as "cancelled" instead of "success" — a green check should always mean a
   # new build was made.
-  cancel_when_no_build:
-    needs: check_status
-    name: Cancel run when there is nothing to build
-    runs-on: ubuntu-latest
-    permissions:
+    cancel_when_no_build:
+      needs: check_status
+      name: Cancel run when there is nothing to build
+      runs-on: ubuntu-latest
+      permissions:
       actions: write
     if: |
       github.event_name == 'schedule' &&
         !(vars.SCHEDULED_BUILD != 'false' && needs.check_status.outputs.IS_SECOND_IN_MONTH == 'true') &&
         !(vars.SCHEDULED_SYNC != 'false' && needs.check_status.outputs.NEW_COMMITS == 'true')
-    steps:
+      steps:
       - name: Cancel the run
         env:
           GH_TOKEN: ${{ github.token }}
